@@ -2,7 +2,6 @@ import webbrowser
 import os
 import sys
 import subprocess
-import colors
 import time
 import getpass
 import pyoslogo
@@ -11,7 +10,7 @@ correctpass = open('user/password.pass')
 cpass = correctpass.read()
 PyOsLogo = pyoslogo.PyOsLogo
 username = getpass.getuser()   
-
+startdir = os.getcwd()
 def main():
     subprocess.run('clear')
     print(pyoslogo.PyOsLoginLogo)
@@ -25,7 +24,7 @@ def main():
         main()
 def started():
     subprocess.run('clear')
-    os.chdir('user/Apps')
+    os.chdir(startdir+'/user/Apps')
     apps()
     
 
@@ -37,6 +36,18 @@ def apps():
     print(f'Today is  {holidays.today}, Days til the new year, ', abs(holidays.timetilnyd.days))
     print('Holdiays:',holidays.todayholiday)
     print('Welcome', f'{username}')
+    l = os.getcwd()
+    p=os.listdir(l)
+    for i in p:
+        if os.path.isdir(i):
+            print(i)
+    cd = input('If there are any categories here, what category would you like to enter? ')
+    if cd is not '' or cd is not ' ':
+        os.chdir(cd)
+        appcont()
+    else:
+        appcont()
+def appcont():            
     app = input(f'What app would you like to run? ')
     try:
         if app+'.py' in os.listdir():
@@ -53,6 +64,7 @@ def apps():
         
 def recurse():
     subprocess.run('clear')
+    os.chdir(startdir+'/user/Apps')
     apps()
     recurse()
     
