@@ -42,7 +42,7 @@ def apps():
     for i in p:
         if os.path.isdir(i):
             print(i)
-    cd = input('If there are any categories here, what category would you like to enter? ')
+    cd = input('If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in. ')
     if cd is not null:
         os.chdir(cd)
         appcont()
