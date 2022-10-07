@@ -11,6 +11,7 @@ cpass = correctpass.read()
 PyOsLogo = pyoslogo.PyOsLogo
 username = getpass.getuser()   
 startdir = os.getcwd()
+null = ''
 def main():
     subprocess.run('clear')
     print(pyoslogo.PyOsLoginLogo)
@@ -42,7 +43,7 @@ def apps():
         if os.path.isdir(i):
             print(i)
     cd = input('If there are any categories here, what category would you like to enter? ')
-    if cd is not '' or cd is not ' ':
+    if cd is not null:
         os.chdir(cd)
         appcont()
     else:
