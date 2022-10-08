@@ -6,6 +6,8 @@ import time
 import getpass
 import pyoslogo
 import holidays
+import glob
+
 correctpass = open('user/password.pass')
 cpass = correctpass.read()
 PyOsLogo = pyoslogo.PyOsLogo
@@ -45,10 +47,17 @@ def apps():
     cd = input('If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in. ')
     if cd is not null:
         os.chdir(cd)
-        appcont()
+        subprocess.run('clear')
+        apps()
     else:
         appcont()
-def appcont():            
+def appcont():
+    dir_path = os.getcwd()
+    res = []
+    for file in os.listdir(dir_path):
+        if file.endswith('.py'):
+            res.append(file)
+        print(res)
     app = input(f'What app would you like to run? ')
     try:
         if app+'.py' in os.listdir():
