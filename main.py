@@ -1,3 +1,4 @@
+# Yes all the apps are just python files, sshh
 import webbrowser
 import os
 import sys
@@ -56,8 +57,9 @@ def appcont():
     res = []
     for file in os.listdir(dir_path):
         if file.endswith('.py'):
-            res.append(file)
-        print(res)
+            res.append(os.path.basename(file).split('.')[0])
+    for x in range(len(res)):
+        print(res[x])
     app = input(f'What app would you like to run? ')
     try:
         if app+'.py' in os.listdir():
