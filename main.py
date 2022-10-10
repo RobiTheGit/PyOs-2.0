@@ -36,7 +36,7 @@ def apps():
     print(f"""
     {PyOsLogo}                            
     """)
-    print('Press Ctrl*Z to shutdown PyOs (not system)')
+    print('Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system)')
     print(f'Today is  {holidays.today}, Days til the new year, ', abs(holidays.timetilnyd.days))
     print('Holdiays:',holidays.todayholiday)
     print('Welcome', f'{username}')
