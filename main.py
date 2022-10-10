@@ -81,8 +81,8 @@ def recurse():
     os.chdir(startdir+'/user/Apps')
     apps()
     recurse()
-    
-subprocess.run('clear')
-print('Starting ...')
-time.sleep(0.5)        
-main()
+if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin')::    
+    subprocess.run('clear')
+    print('Starting ...')
+    time.sleep(0.5)        
+    main()
