@@ -70,8 +70,10 @@ def appcont():
             print('No app found, check if there is a .py file with that name')
             time.sleep(0.9)
             recurse()
+    except KeyboardInterrupt:
+            sys.exit(0)
     except:
-           webbrowser.open("https://github.com/RobiTheGit/PyOs/issues") 
+           webbrowser.open("https://github.com/RobiTheGit/PyOs-2.0/issues") 
            recurse()
         
 def recurse():
