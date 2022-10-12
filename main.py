@@ -31,8 +31,8 @@ def started():
     os.chdir(startdir+'/user/Apps')
     apps()
     
-
 def apps():
+    timer = time.ctime()
     print(f"""
     {PyOsLogo}                            
     """)
@@ -40,6 +40,7 @@ def apps():
     print(f'Today is  {holidays.today}, Days til the new year, ', abs(holidays.timetilnyd.days))
     print('Holdiays:',holidays.todayholiday)
     print('Welcome', f'{username}')
+    print('\n')
     l = os.getcwd()
     p=os.listdir(l)
     for i in p:
@@ -81,7 +82,7 @@ def recurse():
     os.chdir(startdir+'/user/Apps')
     apps()
     recurse()
-if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin')::    
+if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin'):    
     subprocess.run('clear')
     print('Starting ...')
     time.sleep(0.5)        
