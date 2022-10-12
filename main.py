@@ -40,6 +40,7 @@ def apps():
     print(f'Today is  {holidays.today}, Days til the new year, ', abs(holidays.timetilnyd.days))
     print('Holdiays:',holidays.todayholiday)
     print('Welcome', f'{username}')
+    print('Time of login', timer)
     print('\n')
     l = os.getcwd()
     p=os.listdir(l)
