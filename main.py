@@ -47,11 +47,18 @@ def apps():
     for i in p:
         if os.path.isdir(i):
             print(i)
-    cd = input('If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in. ')
+    print('If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.')
+    cd = input('> ')
     if cd is not null:
-        os.chdir(cd)
-        subprocess.run('clear')
-        apps()
+        if os.path.exists(cd):
+            os.chdir(cd)
+            subprocess.run('clear')
+            apps()
+        else:
+            print('Category Does Not Exist!')
+            time.sleep(0.9)
+            subprocess.run('clear')
+            apps()
     else:
         appcont()
 def appcont():
@@ -62,7 +69,8 @@ def appcont():
             res.append(os.path.basename(file).split('.')[0])
     for x in range(len(res)):
         print(res[x])
-    app = input(f'What app would you like to run? ')
+    print('What app would you like to run?')
+    app = input('> ')
     try:
         if app+'.py' in os.listdir():
             subprocess.run('clear')
@@ -83,8 +91,11 @@ def recurse():
     os.chdir(startdir+'/user/Apps')
     apps()
     recurse()
+    
 if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin'):    
     subprocess.run('clear')
     print('Starting ...')
     time.sleep(0.5)        
     main()
+else:
+    print('To run this on Windows, you would need to remove the lockout code and modify it so programs would run properly, this is built to run on linux. If you are not willing to do that, run it on a linux machine or linux vm since most of the subprocess code is linux specific')
