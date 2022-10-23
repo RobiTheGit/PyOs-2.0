@@ -29,7 +29,6 @@ def login():
 def dirsetup():
     subprocess.run('clear')
     os.chdir(startdir+'/user/Apps')
-    dirsetup()
     timer = time.ctime()
     print(f"""
     {PyOsLogo}                            
@@ -91,7 +90,9 @@ def recurse():
     recurse()
     
 if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin'):    
-    subprocess.run('clear')       
+    subprocess.run('clear')
+    print('Starting ...')
+    time.sleep(0.5)        
     login()
 else:
     print('To run this on Windows, you would need to remove the lockout code and modify it so programs would run properly, this is built to run on linux. If you are not willing to do that, run it on a linux machine or linux vm since most of the subprocess code is linux specific')

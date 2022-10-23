@@ -1,5 +1,5 @@
 from datetime import date
-
+import pyoslogo
 today = date.today()
 nyd = date(today.year, 12, 31)
 timetilnyd = nyd - today
@@ -33,6 +33,7 @@ elif today == date(today.year, 10, 31):
 elif today == date(today.year, 9, 28):
     todayholiday = "Dad's Birthday"
     PyOsLogo =pyoslogo.PyOSLogo
+
 elif today == date(today.year, 11, 3):
     todayholiday = "My Birthday"
     PyOsLogo =pyoslogo.PyOSLogo
