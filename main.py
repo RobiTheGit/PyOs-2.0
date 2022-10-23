@@ -7,7 +7,6 @@ import time
 import getpass
 import pyoslogo
 import holidays
-import glob
 
 correctpass = open('user/password.pass')
 cpass = correctpass.read()
@@ -15,23 +14,22 @@ PyOsLogo = pyoslogo.PyOsLogo
 username = getpass.getuser()   
 startdir = os.getcwd()
 null = ''
-def main():
+def login():
     subprocess.run('clear')
     print(pyoslogo.PyOsLoginLogo)
     print(f'Login for {username}')
     passw = getpass.getpass('Password: ', stream=None)
     if passw == cpass:
-        started()
+        dirsetup()
     else:
         print('INVALID PASSWORD')
         time.sleep(0.5)
-        main()
-def started():
+        login()
+
+def dirsetup():
     subprocess.run('clear')
     os.chdir(startdir+'/user/Apps')
-    apps()
-    
-def apps():
+    dirsetup()
     timer = time.ctime()
     print(f"""
     {PyOsLogo}                            
@@ -53,15 +51,15 @@ def apps():
         if os.path.exists(cd):
             os.chdir(cd)
             subprocess.run('clear')
-            apps()
+            dirsetup()
         else:
             print('Category Does Not Exist!')
             time.sleep(0.9)
             subprocess.run('clear')
-            apps()
+            dirsetup()
     else:
-        appcont()
-def appcont():
+        apps()
+def apps():
     dir_path = os.getcwd()
     res = []
     for file in os.listdir(dir_path):
@@ -89,13 +87,14 @@ def appcont():
 def recurse():
     subprocess.run('clear')
     os.chdir(startdir+'/user/Apps')
-    apps()
+    dirsetup()
     recurse()
     
 if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin'):    
     subprocess.run('clear')
     print('Starting ...')
     time.sleep(0.5)        
-    main()
+    login()
 else:
     print('To run this on Windows, you would need to remove the lockout code and modify it so programs would run properly, this is built to run on linux. If you are not willing to do that, run it on a linux machine or linux vm since most of the subprocess code is linux specific')
+    sys.exit(0)
