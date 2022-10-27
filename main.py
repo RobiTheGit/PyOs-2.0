@@ -20,6 +20,7 @@ def login():
     print(f'Login for {username}')
     passw = getpass.getpass('Password: ', stream=None)
     if passw == cpass:
+        os.chdir(startdir+'/user/Apps')
         dirsetup()
     else:
         print('INVALID PASSWORD')
@@ -28,7 +29,6 @@ def login():
 
 def dirsetup():
     subprocess.run('clear')
-    os.chdir(startdir+'/user/Apps')
     timer = time.ctime()
     print(f"""
     {PyOsLogo}                            
@@ -44,8 +44,7 @@ def dirsetup():
     for i in p:
         if os.path.isdir(i):
             print(i)
-    print('If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.')
-    cd = input('> ')
+    cd = input('If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.\n> ') z
     if cd is not null:
         if os.path.exists(cd):
             os.chdir(cd)
@@ -66,8 +65,7 @@ def apps():
             res.append(os.path.basename(file).split('.')[0])
     for x in range(len(res)):
         print(res[x])
-    print('What app would you like to run?')
-    app = input('> ')
+    app = input('What app would you like to run? \n> ')
     try:
         if app+'.py' in os.listdir():
             subprocess.run('clear')
