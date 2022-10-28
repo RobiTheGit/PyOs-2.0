@@ -6,11 +6,11 @@ timetilnyd = nyd - today
 
 if today == date(today.year, 12, 25):
     todayholiday = 'Christmas'
-    PyOsLogo =pyoslogo.PyOSLogoC
+    PyOsLogo =pyoslogo.PyOsLogoC
     
 elif today == date(today.year, 12, 24):
     todayholiday = 'Christmas Eve'
-    PyOsLogo =pyoslogo.PyOSLogoC
+    PyOsLogo =pyoslogo.PyOsLogoC
     
 elif today == date(today.year , 1, 1 ):
     todayholiday = 'New Years Day'
@@ -28,14 +28,14 @@ elif today == date(today.year, 7, 4):
     
 elif today == date(today.year, 10, 31):
     todayholiday = 'Halloween'
-    PyOsLogo = pyoslogo.PyOSLogoH
+    PyOsLogo = pyoslogo.PyOsLogoH
     
 elif today == date(today.year, 9, 28):
     todayholiday = "Dad's Birthday"
-    PyOsLogo =pyoslogo.PyOSLogo
+    PyOsLogo =pyoslogo.PyOsLogo
 
 elif today == date(today.year, 11, 3):
     todayholiday = "My Birthday"
-    PyOsLogo =pyoslogo.PyOSLogo
+    PyOsLogo =pyoslogo.PyOsLogo
 else:
     todayholiday = ''

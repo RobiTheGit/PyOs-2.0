@@ -31,20 +31,21 @@ def login():
         os.chdir(startdir+'/user/Apps')
         dirsetup()
     else:
-        print('{red}INVALID PASSWORD')
+        print(f'{red}INVALID PASSWORD')
         time.sleep(0.5)
         login()
 
 def dirsetup():
     subprocess.run('clear')
     timer = time.ctime()
-    print(f"""{white}
-    {PyOsLogo}                            
+    print(f"""{green}
+    {PyOsLogo}
+    {white}                            
     """)
     print('Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system)')
-    print(f'Today is  {holidays.today}, Days til the new year, ', abs(holidays.timetilnyd.days))
-    print('Holdiays:',holidays.todayholiday)
-    print('Welcome', f'{username}')
+    print(f'Today is  {yellow}{holidays.today}{white}, Days til the new year, {yellow}', abs(holidays.timetilnyd.days))
+    print(f'{white}Holdiays:',holidays.todayholiday)
+    print('Welcome', f'{green}{username}{white}')
     print('Time of login', timer)
     print('\n')
     l = os.getcwd()
@@ -52,14 +53,14 @@ def dirsetup():
     for i in p:
         if os.path.isdir(i):
             print(i)
-    cd = input('If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.\n> ')
+    cd = input(f'If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.\n> ')
     if cd is not null:
         if os.path.exists(cd):
             os.chdir(cd)
             subprocess.run('clear')
             dirsetup()
         else:
-            print('Category Does Not Exist!')
+            print(f'{red}Category Does Not Exist!')
             time.sleep(0.9)
             subprocess.run('clear')
             dirsetup()
@@ -73,7 +74,7 @@ def apps():
             res.append(os.path.basename(file).split('.')[0])
     for x in range(len(res)):
         print(res[x])
-    app = input('What app would you like to run? \n> ')
+    app = input(f'{cyan}What app would you like to run? \n{white}> ')
     try:
         if app+'.py' in os.listdir():
             subprocess.run('clear')
