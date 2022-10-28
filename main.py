@@ -7,6 +7,7 @@ import time
 import getpass
 import pyoslogo
 import holidays
+import colors
 
 correctpass = open('user/password.pass')
 cpass = correctpass.read()
@@ -14,23 +15,30 @@ PyOsLogo = pyoslogo.PyOsLogo
 username = getpass.getuser()   
 startdir = os.getcwd()
 null = ''
+red = colors.ccodes[6]
+blue = colors.ccodes[3]
+green = colors.ccodes[5]
+yellow = colors.ccodes[4]
+cyan = colors.ccodes[1]
+magenta = colors.ccodes[2]
+white = colors.ccodes[0]
 def login():
     subprocess.run('clear')
     print(pyoslogo.PyOsLoginLogo)
-    print(f'Login for {username}')
+    print(f'{white}Login for {username}')
     passw = getpass.getpass('Password: ', stream=None)
     if passw == cpass:
         os.chdir(startdir+'/user/Apps')
         dirsetup()
     else:
-        print('INVALID PASSWORD')
+        print('{red}INVALID PASSWORD')
         time.sleep(0.5)
         login()
 
 def dirsetup():
     subprocess.run('clear')
     timer = time.ctime()
-    print(f"""
+    print(f"""{white}
     {PyOsLogo}                            
     """)
     print('Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system)')
@@ -44,7 +52,7 @@ def dirsetup():
     for i in p:
         if os.path.isdir(i):
             print(i)
-    cd = input('If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.\n> ') z
+    cd = input('If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.\n> ')
     if cd is not null:
         if os.path.exists(cd):
             os.chdir(cd)
@@ -72,7 +80,7 @@ def apps():
             subprocess.run(f"python3 {app}.py", shell=True)
             recurse()
         else:
-            print('No app found, check if there is a .py file with that name')
+            print(f'{red}No app found, check if there is a .py file with that name{white}')
             time.sleep(0.9)
             recurse()
     except KeyboardInterrupt:
