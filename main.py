@@ -31,7 +31,7 @@ def login():
         os.chdir(startdir+'/user/Apps')
         dirsetup()
     else:
-        print(f'{red}INVALID PASSWORD')
+        print(f'{red}INVALID PASSWORD{white}')
         time.sleep(0.5)
         login()
 
@@ -42,12 +42,12 @@ def dirsetup():
     {PyOsLogo}
     {white}                            
     """)
-    print('Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system)')
+    print(f'{blue}Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system){white}')
     print(f'Today is  {yellow}{holidays.today}{white}, Days til the new year, {yellow}', abs(holidays.timetilnyd.days))
     print(f'{white}Holdiays:',holidays.todayholiday)
     print('Welcome', f'{green}{username}{white}')
-    print('Time of login', timer)
-    print('\n')
+    print(f'Time of login{blue}', timer)
+    print(f'{white}\n')
     l = os.getcwd()
     p=os.listdir(l)
     for i in p:
@@ -102,5 +102,5 @@ if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin')
     time.sleep(0.5)        
     login()
 else:
-    print('To run this on Windows, you would need to remove the lockout code and modify it so programs would run properly, this is built to run on linux. If you are not willing to do that, run it on a linux machine or linux vm since most of the subprocess code is linux specific')
+    print(f'{red}To run this on Windows, you would need to remove the lockout code and modify it so programs would run properly, this is built to run on linux. If you are not willing to do that, run it on a linux machine or linux vm since most of the subprocess code is linux specific.{white}')
     sys.exit(0)
