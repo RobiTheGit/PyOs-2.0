@@ -22,7 +22,11 @@ yellow = colors.ccodes[4]
 cyan = colors.ccodes[1]
 magenta = colors.ccodes[2]
 white = colors.ccodes[0]
+print(white)
 def login():
+    if os.path.getsize('user/password.pass') == 0:
+        os.chdir(startdir+'/user/Apps')
+        dirsetup()
     subprocess.run('clear')
     print(pyoslogo.PyOsLoginLogo)
     print(f'{white}Login for {username}')
