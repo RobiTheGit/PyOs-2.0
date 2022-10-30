@@ -1,6 +1,4 @@
 import os
-import time
-import subprocess
 import getpass
 
 def setpwd():
