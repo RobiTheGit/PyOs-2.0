@@ -57,14 +57,14 @@ def dirsetup():
     for i in p:
         if os.path.isdir(i):
             print(i)
-    cd = input(f'If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.\n> ')
+    cd = input(f'{blue}If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.{white}\n> ')
     if cd is not null:
         if os.path.exists(cd):
             os.chdir(cd)
             subprocess.run('clear')
             dirsetup()
         else:
-            print(f'{red}Category Does Not Exist!')
+            print(f'{red}Category Does Not Exist!{white}')
             time.sleep(0.9)
             subprocess.run('clear')
             dirsetup()
