@@ -9,7 +9,7 @@ import pyoslogo
 import holidays
 import colors
 
-correctpass = open('user/password.pass')
+correctpass = open('user/.password/password.pass')
 cpass = correctpass.read()
 PyOsLogo = pyoslogo.PyOsLogo
 username = getpass.getuser()   
@@ -24,7 +24,7 @@ magenta = colors.ccodes[2]
 white = colors.ccodes[0]
 print(white)
 def login():
-    if os.path.getsize('user/password.pass') == 0:
+    if os.path.getsize('user/.password/password.pass') == 0:
         os.chdir(startdir+'/user/Apps')
         dirsetup()
     subprocess.run('clear')
