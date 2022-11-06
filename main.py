@@ -5,30 +5,28 @@ import sys
 import subprocess
 import time
 import getpass
-import pyoslogo
-import holidays
-import colors
+import varis
 
 correctpass = open('user/.password/password.pass')
 cpass = correctpass.read()
-PyOsLogo = pyoslogo.PyOsLogo
+PyOsLogo = varis.PyOsLogo
 username = getpass.getuser()   
 startdir = os.getcwd()
 null = ''
-red = colors.ccodes[6]
-blue = colors.ccodes[3]
-green = colors.ccodes[5]
-yellow = colors.ccodes[4]
-cyan = colors.ccodes[1]
-magenta = colors.ccodes[2]
-white = colors.ccodes[0]
+red = varis.ccodes[6]
+blue = varis.ccodes[3]
+green = varis.ccodes[5]
+yellow = varis.ccodes[4]
+cyan = varis.ccodes[1]
+magenta = varis.ccodes[2]
+white = varis.ccodes[0]
 print(white)
 def login():
     if os.path.getsize('user/.password/password.pass') == 0:
         os.chdir(startdir+'/user/Apps')
         dirsetup()
     subprocess.run('clear')
-    print(pyoslogo.PyOsLoginLogo)
+    print(varis.PyOsLoginLogo)
     print(f'{white}Login for {username}')
     passw = getpass.getpass('Password: ', stream=None)
     if passw == cpass:
@@ -47,8 +45,8 @@ def dirsetup():
     {white}                            
     """)
     print(f'{blue}Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system){white}')
-    print(f'Today is  {yellow}{holidays.today}{white}, Days til the new year, {yellow}', abs(holidays.timetilnyd.days))
-    print(f'{white}Holdiays:',holidays.todayholiday)
+    print(f'Today is  {yellow}{varis.today}{white}, Days til the new year, {yellow}', abs(varis.timetilnyd.days))
+    print(f'{white}Holdiays:',varis.todayholiday)
     print('Welcome', f'{green}{username}{white}')
     print(f'Time of login{blue}', timer)
     print(f'{white}\n')
