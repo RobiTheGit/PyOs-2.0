@@ -52,20 +52,25 @@ def dirsetup():
     print(f'{white}\n')
     l = os.getcwd()
     p=os.listdir(l)
+    dirlist = []
     for i in p:
         if os.path.isdir(i):
             print(i)
-    cd = input(f'{blue}If there are any categories here, what category would you like to enter? If not, press enter, otherwise, type one of the caterorgies names in.{white}\n> ')
-    if cd is not null:
-        if os.path.exists(cd):
-            os.chdir(cd)
-            subprocess.run('clear')
-            dirsetup()
+            dirlist.append(1)
+    if len(dirlist) is not 0:
+        cd = input(f'{blue}What category would you like to enter, type one of the caterorgies names in.{white}\n> ')
+        if cd is not null:
+            if os.path.exists(cd):
+                os.chdir(cd)
+                subprocess.run('clear')
+                dirsetup()
+            else:
+                print(f'{red}Category Does Not Exist!{white}')
+                time.sleep(0.9)
+                subprocess.run('clear')
+                dirsetup()
         else:
-            print(f'{red}Category Does Not Exist!{white}')
-            time.sleep(0.9)
-            subprocess.run('clear')
-            dirsetup()
+            apps()    
     else:
         apps()
 def apps():
@@ -81,6 +86,7 @@ def apps():
         if app+'.py' in os.listdir():
             subprocess.run('clear')
             subprocess.run(f"python3 {app}.py", shell=True)
+            time.sleep(5)
             recurse()
         else:
             print(f'{red}No app found, check if there is a .py file with that name{white}')
