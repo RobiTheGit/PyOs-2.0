@@ -6,6 +6,7 @@ import subprocess
 import time
 import getpass
 import varis
+import theme
 
 correctpass = open('user/.password/password.pass')
 cpass = correctpass.read()
@@ -20,52 +21,56 @@ yellow = varis.ccodes[4]
 cyan = varis.ccodes[1]
 magenta = varis.ccodes[2]
 white = varis.ccodes[0]
-print(white)
+print(theme.color1)
 def login():
     if os.path.getsize('user/.password/password.pass') == 0:
         os.chdir(startdir+'/user/Apps')
         dirsetup()
     subprocess.run('clear')
     print(varis.PyOsLoginLogo)
-    print(f'{white}Login for {username}')
+    print(f'{theme.color1}Login for {username}')
     passw = getpass.getpass('Password: ', stream=None)
     if passw == cpass:
         os.chdir(startdir+'/user/Apps')
         dirsetup()
     else:
-        print(f'{red}INVALID PASSWORD{white}')
+        print(f'{red}INVALID PASSWORD{theme.color1}')
         time.sleep(0.5)
         login()
 
 def dirsetup():
     subprocess.run('clear')
     timer = time.ctime()
-    print(f"""{green}
+    print(f"""{theme.PyOsColor}
     {PyOsLogo}
-    {white}                            
+    {theme.color1}                            
     """)
-    print(f'{blue}Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system){white}')
-    print(f'Today is  {yellow}{varis.today}{white}, Days til the new year, {yellow}', abs(varis.timetilnyd.days))
-    print(f'{white}Holdiays:',varis.todayholiday)
-    print('Welcome', f'{green}{username}{white}')
-    print(f'Time of login{blue}', timer)
-    print(f'{white}\n')
+    print(f'{blue}Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system){theme.color1}')
+    print(f'Today is  {theme.color6}{varis.today}{theme.color1}, Days til the new year, {yellow}', abs(varis.timetilnyd.days))
+    print(f'{theme.color1}Holdiays:',varis.todayholiday)
+    print('Welcome', f'{theme.color5}{username}{theme.color1}')
+    print(f'Time of login{theme.color3}', timer)
+    print(f'{theme.color1}\n')
     l = os.getcwd()
     p=os.listdir(l)
     dirlist = []
     for i in p:
         if os.path.isdir(i):
-            print(i)
-            dirlist.append(1)
+            if i == '__pycache__' or i.startswith('.'):
+                pass
+            else:
+                print(i)
+                dirlist.append(1)
+                
     if len(dirlist) is not 0:
-        cd = input(f'{blue}What category would you like to enter, type one of the caterorgies names in.{white}, else just press enter.\n> ')
+        cd = input(f'{theme.color3}What category would you like to enter, type one of the caterorgies names in.{theme.color1}, else just press enter.\n> ')
         if cd is not null:
             if os.path.exists(cd):
                 os.chdir(cd)
                 subprocess.run('clear')
                 dirsetup()
             else:
-                print(f'{red}Category Does Not Exist!{white}')
+                print(f'{red}Category Does Not Exist!{theme.color1}')
                 time.sleep(0.9)
                 subprocess.run('clear')
                 dirsetup()
@@ -81,7 +86,7 @@ def apps():
             res.append(os.path.basename(file).split('.')[0])
     for x in range(len(res)):
         print(res[x])
-    app = input(f'{cyan}What app would you like to run? \n{white}> ')
+    app = input(f'{theme.color4}What app would you like to run? \n{theme.color1}> ')
     try:
         if app+'.py' in os.listdir():
             subprocess.run('clear')
@@ -89,7 +94,7 @@ def apps():
             time.sleep(3)
             recurse()
         else:
-            print(f'{red}No app found, check if there is a .py file with that name{white}')
+            print(f'{red}No app found, check if there is a .py file with that name{theme.color1}')
             time.sleep(0.9)
             recurse()
     except KeyboardInterrupt:
