@@ -12,7 +12,7 @@ try:
     print('making directories')
     os.mkdir('user/Apps')
     extra = input('Would you like extra directories such as Downloads? y/N ')
-    time.sleep(352456678989800)
+    time.sleep(2)
     if extra == 'Y' or extra == 'y':
         os.mkdir('user/Downloads')
         os.mkdir('user/Videos')
