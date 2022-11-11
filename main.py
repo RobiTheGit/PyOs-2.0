@@ -101,7 +101,7 @@ def apps():
             sys.exit(0)
     except:
            webbrowser.open("https://github.com/RobiTheGit/PyOs-2.0/issues") 
-           recurse()
+           sys.exit(0)
         
 def recurse():
     subprocess.run('clear')
