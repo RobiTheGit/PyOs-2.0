@@ -1,10 +1,8 @@
 import os
 import getpass
-
+import subprocess
 def setpwd():
-    f = open('user/.password/password.pass', 'w')
-    password = getpass.getpass('Password: ', stream=None)
-    f.write(password)
+    subprocess.run('python3 pswdset.py',shell=True, check=True)
 
 print('This should only be ran when your first get PyOs')
 
