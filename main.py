@@ -45,8 +45,8 @@ def dirsetup():
     {PyOsLogo}
     {theme.color1}                            
     """)
-    print(f'{blue}Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system){theme.color1}')
-    print(f'Today is  {theme.color6}{varis.today}{theme.color1}, Days til the new year, {yellow}', abs(varis.timetilnyd.days))
+    print(f'{theme.color3}Press Ctrl_Z or Ctrl_C to shutdown PyOs (not system){theme.color1}')
+    print(f'Today is  {theme.color6}{varis.today}{theme.color1}, Days til the new year, {theme.color6}', abs(varis.timetilnyd.days))
     print(f'{theme.color1}Holdiays:',varis.todayholiday)
     print('Welcome', f'{theme.color5}{username}{theme.color1}')
     print(f'Time of login{theme.color3}', timer)
@@ -70,7 +70,7 @@ def dirsetup():
                 subprocess.run('clear')
                 dirsetup()
             else:
-                print(f'{red}Category Does Not Exist!{theme.color1}')
+                print(f'{theme.errorcolor}Category Does Not Exist!{theme.color1}')
                 time.sleep(0.9)
                 subprocess.run('clear')
                 dirsetup()
@@ -94,7 +94,7 @@ def apps():
             time.sleep(3)
             recurse()
         else:
-            print(f'{red}No app found, check if there is a .py file with that name{theme.color1}')
+            print(f'{theme.errorcolor}No app found, check if there is a .py file with that name{theme.color1}')
             time.sleep(0.9)
             recurse()
     except KeyboardInterrupt:
