@@ -115,8 +115,6 @@ elif today == nyd:
     
 elif today == date(today.year, 7, 4):
     todayholiday = 'Fourth of July'
-    c1 = colors.ccodes[6]
-    c2 = colors.ccodes[3]
     PyOsLogo = PyOsLogoA
     
 elif today == date(today.year, 10, 31):
