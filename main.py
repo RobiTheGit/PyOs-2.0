@@ -63,6 +63,7 @@ def dirsetup():
                 dirlist.append(1)
                 
     if len(dirlist) is not 0:
+        print('Your filepath is currently', os.getcwd())
         cd = input(f'{theme.color3}What category would you like to enter, type one of the caterorgies names in.{theme.color1}, else just press enter.\n> ')
         if cd is not null:
             if os.path.exists(cd):
@@ -115,5 +116,5 @@ if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin')
     time.sleep(0.5)        
     login()
 else:
-    print(f'{red}To run this on Windows, you would need to remove the lockout code and modify it so programs would run properly, this is built to run on linux. If you are not willing to do that, run it on a linux machine or linux vm since most of the subprocess code is linux specific.{white}')
+    print(f'{theme.errorcolor}To run this on Windows, you would need to remove the lockout code and modify it so programs would run properly, this is built to run on linux. If you are not willing to do that, run it on a linux machine or linux vm since most of the subprocess code is linux specific.{white}')
     sys.exit(0)
