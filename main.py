@@ -7,7 +7,6 @@ import time
 import getpass
 import varis
 import theme
-
 correctpass = open('user/.password/password.pass')
 cpass = correctpass.read()
 PyOsLogo = varis.PyOsLogo
@@ -25,7 +24,7 @@ print(theme.color1)
 def login():
     if os.path.getsize('user/.password/password.pass') == 0:
         os.chdir(startdir+'/user/Apps')
-        dirsetup()
+        dirsetup()   
     subprocess.run('clear')
     print(varis.PyOsLoginLogo)
     print(f'{theme.color1}Login for {username}')
@@ -37,7 +36,6 @@ def login():
         print(f'{red}INVALID PASSWORD{theme.color1}')
         time.sleep(0.5)
         login()
-
 def dirsetup():
     subprocess.run('clear')
     timer = time.ctime()
@@ -87,13 +85,20 @@ def apps():
             res.append(os.path.basename(file).split('.')[0])
     for x in range(len(res)):
         print(res[x])
+    print('Your filepath is currently', os.getcwd())
     app = input(f'{theme.color4}What app would you like to run? \n{theme.color1}> ')
     try:
         if app+'.py' in os.listdir():
-            subprocess.run('clear')
-            subprocess.run(f"python3 {app}.py", shell=True)
-            time.sleep(3)
-            recurse()
+            if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin'):
+                subprocess.run('clear')
+                subprocess.run(f"python3 {app}.py", shell=True)
+                time.sleep(3)
+                recurse()
+            else:
+                subprocess.run('cls')
+                subprocess.run(f"python {app}.py", shell=True)
+                time.sleep(3)
+                recurse()           
         else:
             print(f'{theme.errorcolor}No app found, check if there is a .py file with that name{theme.color1}')
             time.sleep(0.9)
@@ -105,8 +110,12 @@ def apps():
            sys.exit(0)
         
 def recurse():
-    subprocess.run('clear')
-    os.chdir(startdir+'/user/Apps')
+    if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin'): 
+        subprocess.run('clear')
+    else:
+        subprocess.run('cls')
+        
+    os.chdir(startdir+'/user/Apps')   
     dirsetup()
     recurse()
     
@@ -116,5 +125,8 @@ if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin')
     time.sleep(0.5)        
     login()
 else:
-    print(f'{theme.errorcolor}To run this on Windows, you would need to remove the lockout code and modify it so programs would run properly, this is built to run on linux. If you are not willing to do that, run it on a linux machine or linux vm since most of the subprocess code is linux specific.{white}')
-    sys.exit(0)
+    print(f'{theme.errorcolor}Windows Compatibility Beta!{white}')
+    subprocess.run('cls')
+    print('Starting ...')
+    time.sleep(0.5)        
+    login()

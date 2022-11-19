@@ -1,8 +1,12 @@
 import os
 import getpass
 import subprocess
+import sys
 def setpwd():
-    subprocess.run('python3 pswdset.py',shell=True, check=True)
+    if not sys.platform.startswith('win32') or not sys.platform.startswith('cygwin'):    
+        subprocess.run('python3 pswdset.py',shell=True, check=True)
+    else:
+        subprocess.run('python pswdset.py',shell=True, check=True)
 
 print('This should only be ran when your first get PyOs')
 
